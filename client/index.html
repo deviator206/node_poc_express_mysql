@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense App</title>
+</head>
+    <body>
+        <div id="login">
+        <label> User Name </label><input id="username" placeholder=" Enter User Name">
+        <br>
+        <label >Phone Number</label>  <input id="phonnumber">
+        <br>
+        <button onclick="registerUser()"> Register User</button>    
+        <hr>    
+        </div>
+        <div id="addFriends">
+            <textarea id="friendsnumber" rows="5" cols="20" placeholder="add friends number"></textarea>
+           <hr>
+            <button onclick="sendContacts()"> Send Friends Phone Number</button>
+        </div>
+    
+        <script>
+        
+        
+            // MOM : Vidyankur Shala San. No. 22 Sainikavadi Dakshinekadil Kholi Kr. 5 
+            //DAD : Vidyankur Shala San. No. 22 Sainikavadi Dakshinekadil Kholi Kr. 5  
+            // ME :Vidyankur Shala S. No. 22 Uttarekadil Kholi Kr. . 3
+            
+            window.onload = function()
+            {
+               console.log("all loaded!");
+                
+            }
+            
+            
+            function sendRequest (data,url,callback)
+            {
+                console.log("sent req");
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                  {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                  }
+                else
+                  {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                  }
+                console.log(xmlhttp);
+
+                xmlhttp.onreadystatechange=function()
+                              {
+                    console.log(xmlhttp.readyState +" | "+xmlhttp.status);
+                              if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                                {
+                               callback (xmlhttp.responseText);
+                                }
+                              }
+                xmlhttp.open("GET",url+"/data="+data,true);
+                xmlhttp.send("");
+            }
+            
+            function sendContacts()
+            {
+                 var register =  document.getElementById("friendsnumber").value ;
+                sendRequest(register,'http://127.0.0.1:1234/getphonenumber',onFriendsSuccess)
+            }
+            
+            
+            function registerUser()
+            {
+                var register =  document.getElementById("username").value +","+document.getElementById("phonnumber");
+                sendRequest(register,'http://127.0.0.1:1234/register',onLoginSuccess)
+            }
+            
+            function onLoginSuccess(data)
+            {
+                console.log("data rcvd from server");
+                console.log(data)
+            }
+            
+            function onFriendsSuccess(data)
+            {
+                console.log("data rcvd from server");
+                console.log(data)
+            }
+            
+        </script>
+    </body>
+
+
+</html>
+
