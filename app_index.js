@@ -16,14 +16,19 @@ var isDBConnected =false;
 
 app.get("/getphonenumber/:data",function(req,res){
     var sT = req.params.data;
-    var arrT =  sT.split(",");
-    res.type("text/plain");
-    res.send(" this is simple text");   
+	console.log("sT:"+sT);
+	/*console.log(JSON.parse(sT))
+    var arrT =  sT.split(",");*/
+    res.type("application/json");
+    res.send({ "reply":"this is simple text"});   
     
 });
 
 app.get("/register/:data",function(req,res){
     var sT = req.params.data;
+	
+	
+	
     var arrT =  sT.split(",");
     
     var numbr =Number(arrT[0]);

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> b-poc1</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="ourcode/app_style.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+
+	</head>
+	<body>
+		<!-- http://www.tutorialspoint.com/bootstrap/bootstrap_buttons.htm -->
+
+		<div id="login" class="container">
+			<div class="row">
+				<h3>First Time User</h3>
+				<label  class="col-sm-2 control-label">UserName</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control"  placeholder="Enter User Name">
+				</div>
+				<label  class="col-sm-2 control-label">Friends List</label>
+				<div class="col-sm-10">
+					<textarea id="txtFrndsPhoneNumbers"  class="form-control"  placeholder="Enter Friends List"></textarea>
+				</div>
+
+				<button class="btn register-button">
+					Register
+				</button>
+
+			</div>
+			<div class="row">
+				<h3> Registered User</h3>
+				<label  class="col-sm-2 control-label">Phone Number</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" placeholder="Enter Phn Number">
+				</div>
+
+				<button class="btn">
+					Login
+				</button>
+			</div>
+
+		</div>
+		<div id="page1" class="container">
+			<div  id="toppnel" class="row" >
+				<button class="col-xs-3 btn" data-toggle="modal" data-target="#myModalForFriendList" >
+					Friends
+				</button>
+				<button class="col-xs-3 btn"  data-toggle="modal" data-target="#myModalForCreateGrp">
+					Create New Group
+				</button>
+			</div>
+			<div class="row" >
+				<ul id="grplist"  class="list-group">
+					<li class="list-group-item grp_row col-xs-10">
+						Group A
+					</li>
+					<li class="list-group-item grp_row col-xs-10">
+						Group B
+					</li>
+					<li class="list-group-item grp_row col-xs-10">
+						Group C
+					</li>
+					<li class="list-group-item grp_row col-xs-10">
+						Group D
+					</li>
+					<li class="list-group-item grp_row col-xs-10">
+						Group E
+					</li>
+					<li class="list-group-item grp_row col-xs-10">
+						Group F
+					</li>
+				</ul>
+			</div>
+
+			<div class="modal fade" id="myModalForFriendList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel"> Friends List </h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<ul class="list-group">
+									<li class="list-group-item frnd-details">
+										Cras justo odio
+									</li>
+									<li class="list-group-item frnd-details">
+										Dapibus ac facilisis in
+									</li>
+									<li class="list-group-item frnd-details">
+										Morbi leo risus
+									</li>
+									<li class="list-group-item frnd-details">
+										Porta ac consectetur ac
+									</li>
+									<li class="list-group-item frnd-details">
+										Vestibulum at eros
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="myModalForCreateGrp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel"> Create New Group</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<label  class="col-sm-4 control-label">Enter Group Name</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="inputGrpName" placeholder="Enter Group Name">
+								</div>
+							</div>
+							<div class="row">
+								<button class="btn add-frnds-to-grp">
+									Add Friends
+								</button>
+								<div class="list-group">
+									<a href="#" class="list-group-item ">List group item heading
+									<button class="btn">
+										delete
+									</button> </a>
+									<a href="#" class="list-group-item"> List group item heading
+									<button class="btn">
+										delete
+									</button> </a>
+									<a href="#" class="list-group-item">List group item heading
+									<button class="btn">
+										delete
+									</button> </a>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="modal-footer">
+
+							<button type="button" class="btn create-grp-btn">
+								Create Group
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="grp_in_detail" class="container">
+			<div class="row">
+				<button class="back-button">
+					Back
+				</button>
+			</div>
+			<div class="row">
+				<h1> Grp Name </h1>
+			</div>
+			<div class="row">
+				<button data-toggle="modal" data-target="#myModal">
+					View Report
+				</button>
+			</div>
+			<div class="row">
+				<button data-toggle="modal" data-target="#myModalForAddingExpense">
+					Add Expense
+				</button>
+			</div>
+			<div class="row">
+				<button  data-toggle="modal" data-target="#myModalForContribution">
+					Add Contribution
+				</button>
+			</div>
+
+			<div class="modal fade" id="myModalForContribution" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel"> Add Your Contribution</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<label  class="col-sm-2 control-label">Enter Amt</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="inputAmountForContribution" placeholder="Enter Amnt Contributed">
+								</div>
+							</div>
+							<div class="row">
+								<label  class="col-sm-2 control-label">Enter Description</label>
+								<div class="col-sm-10">
+									<textarea  class="form-control" id="inputDescriptionForContribution" placeholder="Enter Description"></textarea>
+								</div>
+							</div>
+
+						</div>
+						<div class="modal-footer">
+
+							<button type="button" class="btn">
+								Submit Expenses
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel">Expenses Report</h4>
+						</div>
+						<div class="modal-body">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-condensed">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>First Name</th>
+											<th>Contribution</th>
+											<th>Amt To Give</th>
+											<th>Amt To Rcv</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td >1</td>
+											<td >Person A</td>
+											<td >100 INR</td>
+											<td >200 INR</td>
+											<td >0 INR</td>
+										</tr>
+										<tr>
+											<td >2</td>
+											<td >Person B</td>
+											<td >1000 INR</td>
+											<td >0 INR</td>
+											<td >300 INR</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="myModalForAddingExpense" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel">Add Expense</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<label  class="col-sm-2 control-label">Enter Amt</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="inputAmountForContribution" placeholder="Enter Amnt Contributed">
+								</div>
+							</div>
+							<div class="row">
+								<label  class="col-sm-2 control-label">Enter Description</label>
+								<div class="col-sm-10">
+									<textarea  class="form-control" id="inputDescriptionForContribution" placeholder="Enter Description"></textarea>
+								</div>
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn">
+								Submit Expenses
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div  id="processing_screen" style="width:100%;height: 100%;  position: absolute;color: white;" >
+
+			<div id="processing">
+
+			</div>
+			<div class="container" style=";margin-left: 20%;margin-top: 20%;">
+				<div class="row" >
+					<p class="col-sm-10" >
+						<h1 style="color: black;"> processing ...</h1>
+					
+					</p>
+				</div>
+				<div class="row" >
+					<img src="ourcode/gears_animated.gif" />
+				
+				</div>
+			</div>
+
+		</div>
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="ourcode/main.js"></script>
+	</body>
+
+</html>
