@@ -10,46 +10,46 @@ var connection = mysql.createConnection({
 });
 
 
-var isDBConnected =false;
 
 
+//https://gist.github.com/pixelhandler/1791080
 
-app.get("/getphonenumber/:data",function(req,res){
-    var sT = req.params.data;
-	console.log("sT:"+sT);
-	/*console.log(JSON.parse(sT))
-    var arrT =  sT.split(",");*/
-    res.type("application/json");
-    res.send({ "reply":"this is simple text"});   
-    
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
-app.get("/register/:data",function(req,res){
-    var sT = req.params.data;
-	
-	
-	
-    var arrT =  sT.split(",");
-    
-    var numbr =Number(arrT[0]);
-    var name =arrT[1];
-    
-    connection.connect(function(){
-    connection.query('INSERT INTO USER_IN_01(UNAME,PNUMBER) VALUES("'+name+'","'+numbr+'") ', function(err, rows, fields) {
-                  if (err) throw err;
+app.use(require('connect').bodyParser());
 
-                  console.log('ADDED THE ROW ');
-                });
-
-
-                    }); 
-
-
-                connection.end()
-    res.type("text/plain");
-    res.send("success");   
-    
+// POST to CREATE
+app.post('/api/getphonenumber', function (req, res) {
+	  var product;
+	  console.log("POST: ");
+	  console.log(req.body.title);
+	  console.log(req.body.description);
+	  product = {
+		title: req.body.title,
+		description: req.body.description,
+	  };
+	  
+	  return res.send(product);
 });
+
+
+// Single product
+app.get('/api/products/:id', function (req, res) {
+	var product ={};
+	var number = req.params.id;
+	console.log(number)
+	if(number == '1')
+	product ={
+		name : "sandeep yulp!"
+	}
+	 
+  return res.send(product);
+});
+
 
 app.listen(1234,function(){
     console.log("application is listening..");

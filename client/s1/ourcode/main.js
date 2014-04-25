@@ -50,28 +50,53 @@ function addEventListeners() {
         currentScreenId = scr.indexOf("page1");
         showScreen(currentScreenId);
         //showProcessing(true);
-        sendRequest('get', {
-            "a" : "1"
-        }, "register")
+        /*
+         POST REQUEST!!
+         sendRequest_1('post', {
+         "title" : "My Awesome T-shirt",
+         "description" : "All about the details. Of course it's black."
+         }, "http://localhost:1234/api/getphonenumber?")
+
+         GET REQUEST!!
+         sendRequest_1('get', '1213', "http://localhost:1234/api/products/")
+         * */
+
+        sendRequest_1('post', {
+            "title" : "My Awesome T-shirt",
+            "description" : "All about the details. Of course it's black."
+        }, "http://localhost:1234/api/getphonenumber?")
+
     });
 
 }
 
-function sendRequest(method, data, api) {
-    var xmlhttp;
-    var baseURL = "http://localhost:1234/"
-    var apiLookUp = ['register'];
-    var urlLookUp = ['getphonenumber/'];
-    var actualURL = urlLookUp[(apiLookUp.indexOf(api))];
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    } else {// code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+function sendRequest_1(method, data, url) {
+
+    var xmlHttpReq = false;
+
+    if (method === "get")
+        url += data;
+    // Mozilla/Safari
+    if (window.XMLHttpRequest) {
+        xmlHttpReq = new XMLHttpRequest();
     }
-    xmlhttp.open("GET", baseURL + "" + actualURL + "data=" + Math.random(), true);
-    
-    xmlhttp.send();
-};
+    // IE
+    else if (window.ActiveXObject) {
+        xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlHttpReq.open(method.toUpperCase(), url, true);
+    if (method !== "get")
+        xmlHttpReq.setRequestHeader('Content-Type', 'application/json');
+
+    xmlHttpReq.onreadystatechange = function() {
+        if (xmlHttpReq.readyState == 4) {
+            console.log(xmlHttpReq.responseText);
+        }
+    };
+
+    xmlHttpReq.send((method === "get") ? null : JSON.stringify(data));
+
+}
 
 function showProcessing(bcheck) {
     if (bcheck)
